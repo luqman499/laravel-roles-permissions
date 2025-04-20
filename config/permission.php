@@ -6,7 +6,7 @@ return [
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which
-         * Eloquent model should be used to retrieve your permissions. Of course, it
+         * Eloquent model should be used to retrieve your permission. Of course, it
          * is often just the "Permission" model but you may use whatever you like.
          *
          * The model you want to use as a Permission model needs to implement the
@@ -40,15 +40,15 @@ return [
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which
-         * table should be used to retrieve your permissions. We have chosen a basic
+         * table should be used to retrieve your permission. We have chosen a basic
          * default value but you may easily change it to any table you like.
          */
 
-        'permissions' => 'permissions',
+        'permission' => 'permission',
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which
-         * table should be used to retrieve your models permissions. We have chosen a
+         * table should be used to retrieve your models permission. We have chosen a
          * basic default value but you may easily change it to any table you like.
          */
 
@@ -64,7 +64,7 @@ return [
 
         /*
          * When using the "HasRoles" trait from this package, we need to know which
-         * table should be used to retrieve your roles permissions. We have chosen a
+         * table should be used to retrieve your roles permission. We have chosen a
          * basic default value but you may easily change it to any table you like.
          */
 
@@ -97,15 +97,15 @@ return [
     ],
 
     /*
-     * When set to true, the method for checking permissions will be registered on the gate.
-     * Set this to false if you want to implement custom logic for checking permissions.
+     * When set to true, the method for checking permission will be registered on the gate.
+     * Set this to false if you want to implement custom logic for checking permission.
      */
 
     'register_permission_check_method' => true,
 
     /*
      * When set to true, Laravel\Octane\Events\OperationTerminated event listener will be registered
-     * this will refresh permissions on every TickTerminated, TaskTerminated and RequestTerminated
+     * this will refresh permission on every TickTerminated, TaskTerminated and RequestTerminated
      * NOTE: This should not be needed in most cases, but an Octane/Vapor combination benefited from it.
      */
     'register_octane_reset_listener' => false,
@@ -134,13 +134,13 @@ return [
     'teams' => false,
 
     /*
-     * The class to use to resolve the permissions team id
+     * The class to use to resolve the permission team id
      */
     'team_resolver' => \Spatie\Permission\DefaultTeamResolver::class,
 
     /*
      * Passport Client Credentials Grant
-     * When set to true the package will use Passports Client to check permissions
+     * When set to true the package will use Passports Client to check permission
      */
 
     'use_passport_client_credentials' => false,
@@ -169,7 +169,7 @@ return [
     'enable_wildcard_permission' => false,
 
     /*
-     * The class to use for interpreting wildcard permissions.
+     * The class to use for interpreting wildcard permission.
      * If you need to modify delimiters, override the class and specify its name here.
      */
     // 'permission.wildcard_permission' => Spatie\Permission\WildcardPermission::class,
@@ -179,14 +179,14 @@ return [
     'cache' => [
 
         /*
-         * By default all permissions are cached for 24 hours to speed up performance.
-         * When permissions or roles are updated the cache is flushed automatically.
+         * By default all permission are cached for 24 hours to speed up performance.
+         * When permission or roles are updated the cache is flushed automatically.
          */
 
         'expiration_time' => \DateInterval::createFromDateString('24 hours'),
 
         /*
-         * The cache key used to store all permissions.
+         * The cache key used to store all permission.
          */
 
         'key' => 'spatie.permission.cache',

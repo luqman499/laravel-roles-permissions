@@ -10,4 +10,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/permission/create', [App\Http\Controllers\PermissionController::class, 'create'])->name('permission.create');
+Route::post('/permission/store', [App\Http\Controllers\PermissionController::class, 'store'])->name('permission.store');
 
