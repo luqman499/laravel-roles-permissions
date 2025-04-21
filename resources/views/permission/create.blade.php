@@ -1,13 +1,20 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card shadow-sm border-0 rounded-4">
-                    <div class="card-header bg-primary text-white fs-5 fw-semibold rounded-top-4">
-                        {{ __('Permissions') }}
+
+                    {{-- Card Header --}}
+                    <div class="card-header bg-primary text-white fs-5 fw-semibold rounded-top-4 d-flex justify-content-between align-items-center">
+                        <span>{{ __('Permissions / Create') }}</span>
+                        <a href="{{ route('permission.index') }}" class="btn btn-sm btn-light text-primary fw-semibold">
+                            ← Back
+                        </a>
                     </div>
 
+                    {{-- Card Body --}}
                     <div class="card-body bg-light rounded-bottom-4">
                         @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -16,13 +23,13 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{route('permission.store')}}">
+                        <form method="POST" action="{{ route('permission.store') }}">
                             @csrf
-                            <div class="mb-3 col-md-6 ">
+                            <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label text-secondary">Name</label>
-                                <input type="text" class="form-control"  name="name" placeholder="Enter name">
+                                <input type="text" class="form-control" name="name" placeholder="Enter name" value="{{ old('name') }}">
                                 @error('name')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
