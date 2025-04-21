@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
     //this method will show the permission page
     public function index(){
-
+        return view('permission.list');
     }
 
     //this method will show the create permission page
@@ -22,7 +23,10 @@ class PermissionController extends Controller
        $validator= Validator::make($request->all(),[
            'name'=>'required|unique:permissions|min:3',
        ]);
-       if($validator->passes()){}
+       if($validator->passes()){
+           Permission::create(['name'=>$request->name]);
+           return redirect()->route('permission.index')->with('success','Permission created successfully');
+       }
        else{
            return redirect()->route('permission.create')->withInput()->withErrors($validator);
        }
