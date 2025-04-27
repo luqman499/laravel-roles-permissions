@@ -22,7 +22,7 @@
                                     <th style="width: 5%">#</th>
                                     <th>Name</th>
                                     <th>Created</th>
-                                    <th style="width: 20%">Action</th>
+                                    <th style="width: 20%; text-align: center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -31,7 +31,7 @@
                                         <td>{{ $permission->id }}</td>
                                         <td>{{ $permission->name }}</td>
                                         <td>{{ $permission->created_at->format('d M Y') }}</td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <a href="#" class="btn btn-sm btn-primary">Edit</a>
                                             <form action="#" method="POST" class="d-inline">
                                                 @csrf

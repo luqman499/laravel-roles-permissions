@@ -21,7 +21,10 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <div class="d-flex align-items-center gap-4">
-                    <a class="nav-link px-0 {{ request()->routeIs('home') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('home') }}">
+{{--                    <a class="nav-link px-0 {{ request()->routeIs('home') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('home') }}">--}}
+{{--                        {{ config('app.name', 'Laravel') }}--}}
+{{--                    </a>--}}
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                     <a class="nav-link px-0 {{ request()->is('permission*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('permission.index') }}">
