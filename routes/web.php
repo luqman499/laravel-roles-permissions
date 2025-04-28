@@ -15,4 +15,5 @@ Route::get('/permission/create', [App\Http\Controllers\PermissionController::cla
 Route::post('/permission/store', [App\Http\Controllers\PermissionController::class, 'store'])->name('permission.store');
 Route::get('/permission/edit/{id}', [App\Http\Controllers\PermissionController::class, 'edit'])->name('permission.edit');
 Route::post('/permission/{id}', [App\Http\Controllers\PermissionController::class, 'update'])->name('permission.update');
+Route::delete('/permission/{id}', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permission.destroy');
 

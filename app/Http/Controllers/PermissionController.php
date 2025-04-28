@@ -58,5 +58,10 @@ class PermissionController extends Controller
         }
     }
     //this method will show the destroy permission page
-    public function destroy(){}
+    public function destroy(Request $request, $id){
+        $permission = Permission::find($id);
+        $permission->delete();
+        session()->flash("success","Permission deleted successfully");
+        return back();
+    }
 }
