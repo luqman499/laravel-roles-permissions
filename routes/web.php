@@ -13,4 +13,6 @@ Route::get('/permission', [App\Http\Controllers\PermissionController::class,'ind
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/permission/create', [App\Http\Controllers\PermissionController::class, 'create'])->name('permission.create');
 Route::post('/permission/store', [App\Http\Controllers\PermissionController::class, 'store'])->name('permission.store');
+Route::get('/permission/edit/{id}', [App\Http\Controllers\PermissionController::class, 'edit'])->name('permission.edit');
+Route::post('/permission/{id}', [App\Http\Controllers\PermissionController::class, 'update'])->name('permission.update');
 

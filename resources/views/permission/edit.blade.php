@@ -9,7 +9,7 @@
                     {{-- Card Header --}}
                     <div
                         class="card-header bg-primary text-white fs-5 fw-semibold rounded-top-4 d-flex justify-content-between align-items-center">
-                        <span>{{ __('Permissions / Create') }}</span>
+                        <span>{{ __('Permissions / Edit') }}</span>
                         <a href="{{ route('permission.index') }}" class="btn btn-sm btn-light text-primary fw-semibold">
                             ← Back
                         </a>
@@ -25,17 +25,17 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('permission.store') }}">
+                        <form method="POST" action="{{ route('permission.update',$permission->id) }}">
                             @csrf
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label text-secondary">Name</label>
                                 <input type="text" class="form-control" name="name" placeholder="Enter name"
-                                       value="{{ old('name') }}">
+                                       value="{{ old('name',$permission->name) }}">
                                 @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
 
                         <p class="mb-0 text-secondary fs-6"></p>

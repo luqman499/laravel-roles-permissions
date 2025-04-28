@@ -32,7 +32,7 @@
                                         <td>{{ $permission->name }}</td>
                                         <td>{{ $permission->created_at->format('d M Y') }}</td>
                                         <td style="text-align: center;">
-                                            <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                                            <a href="{{route('permission.edit',$permission->id)}}" class="btn btn-sm btn-primary">Edit</a>
                                             <form action="#" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -48,7 +48,6 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
