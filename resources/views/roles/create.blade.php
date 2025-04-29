@@ -9,7 +9,7 @@
                     {{-- Card Header --}}
                     <div
                         class="card-header bg-primary text-white fs-5 fw-semibold rounded-top-4 d-flex justify-content-between align-items-center">
-                        <span>{{ __('Permissions / Create') }}</span>
+                        <span>{{ __('Roles / Create') }}</span>
                         <a href="{{ route('permission.index') }}" class="btn btn-sm btn-light text-primary fw-semibold">
                             ← Back
                         </a>
@@ -35,9 +35,18 @@
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="grid grid-cols-4">
+                                @if($permissions->isNotEmpty())
+                                    @foreach($permissions as $permission)
+                                        <div class="mt-3">
+                                            <input type="checkbox" class="rounded" name="permission" value="{{$permission->name}}">
+                                            <label for="">{{$permission->name}}</label>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-
                         <p class="mb-0 text-secondary fs-6"></p>
                     </div>
                 </div>
