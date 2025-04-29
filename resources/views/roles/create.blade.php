@@ -25,7 +25,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('permission.store') }}">
+                        <form method="POST" action="{{ route('role.store') }}">
                             @csrf
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label text-secondary">Name</label>
@@ -35,15 +35,18 @@
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="grid grid-cols-4">
-                                @if($permissions->isNotEmpty())
-                                    @foreach($permissions as $permission)
-                                        <div class="mt-3">
-                                            <input type="checkbox" class="rounded" name="permission" value="{{$permission->name}}">
-                                            <label for="">{{$permission->name}}</label>
-                                        </div>
-                                    @endforeach
-                                @endif
+                            <div class="mb-4">
+                                <label class="form-label text-secondary d-block">Assign Roles:</label>
+                                <div class="d-flex flex-wrap gap-3">
+                                    @if($permissions->isNotEmpty())
+                                        @foreach($permissions as $permission)
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" name="permission[]" id="permission_{{ $permission->id }}" value="{{ $permission->name }}">
+                                                <label class="form-check-label" for="permission_{{ $permission->id }}">{{ $permission->name }}</label>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
