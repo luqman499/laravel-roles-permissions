@@ -19,7 +19,7 @@ Route::post('/permission/{id}', [App\Http\Controllers\PermissionController::clas
 Route::delete('/permission/{id}', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permission.destroy');
 
 //Roles Routes
-Route::get('/role', [App\Http\Controllers\RoleController::class, 'index'])->name('role.index');
-Route::get('/role/create', [App\Http\Controllers\RoleController::class, 'create'])->name('role.create');
-Route::post('/role/store', [App\Http\Controllers\RoleController::class, 'store'])->name('role.store');
+Route::get('/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('roles.index');
+Route::get('/roles/create', [App\Http\Controllers\RoleController::class, 'create'])->name('roles.create');
+Route::post('/roles/store', [App\Http\Controllers\RoleController::class, 'store'])->name('roles.store');
 

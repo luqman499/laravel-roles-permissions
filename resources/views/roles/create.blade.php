@@ -25,7 +25,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('role.store') }}">
+                        <form method="POST" action="{{ route('roles.store') }}">
                             @csrf
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label text-secondary">Name</label>

@@ -22,21 +22,22 @@ class RoleController extends Controller
     }
 
     //This method will store role page
-    public function store(Request $request, $role){
+    public function store(Request $request){
         $validator= Validator::make($request->all(),[
             'name'=>'required|unique:roles|min:3',
         ]);
-        if($validator->passes()){
-            Role::create(['name'=>$request->name]);
-            if (!empty($request->permissions)){
-                foreach ($request->permissions as $permission){
-                    $role->givePermissionTo($permission);
+
+            if ($validator->passes()) {
+               $role =  Role::create(['name'=>$request->name]);
+                if (!empty($request->permission)) {
+                    foreach ($request->permission as $permission) {
+                        $role->givePermissionTo($permission);
+                    }
                 }
+                return redirect()->route('roles.index')->with('success','Permission created successfully');
             }
-            return redirect()->route('role.index  ')->with('success','Role  created successfully');
-        }
         else{
-            return redirect()->route('role.create')->withInput()->withErrors($validator);
+            return redirect()->route('roles.create')->withInput()->withErrors($validator);
         }
     }
 }
