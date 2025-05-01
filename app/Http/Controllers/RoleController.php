@@ -11,7 +11,8 @@ class RoleController extends Controller
 {
     //This method will show role page
     public function index(){
-        return view('roles.list');
+        $roles = Role::all();
+        return view('roles.list', compact('roles'));
 
     }
 
