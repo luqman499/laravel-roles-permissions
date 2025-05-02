@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card shadow-sm border-0 rounded-4">
                     <div class="card-header bg-primary text-white fs-5 fw-semibold rounded-top-4 d-flex justify-content-between align-items-center">
-                        {{ __('Permissions') }}
+                        {{ __('Roles') }}
                         <a href="{{ route('roles.create') }}" class="btn btn-sm btn-light text-primary fw-semibold">
                             + Create
                         </a>
