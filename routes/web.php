@@ -22,4 +22,7 @@ Route::delete('/permission/{id}', [App\Http\Controllers\PermissionController::cl
 Route::get('/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('roles.index');
 Route::get('/roles/create', [App\Http\Controllers\RoleController::class, 'create'])->name('roles.create');
 Route::post('/roles/store', [App\Http\Controllers\RoleController::class, 'store'])->name('roles.store');
+Route::get('/roles/edit/{id}', [App\Http\Controllers\RoleController::class, 'edit'])->name('roles.edit');
+Route::post('/roles/{id}', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update');
+Route::delete('/roles/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.destroy');
 

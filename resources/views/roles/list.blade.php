@@ -31,16 +31,16 @@
                                         <td>{{ $role->name }}</td>
                                         <td>{{ $role->permissions->pluck('name')->implode(',') }}</td>
                                         <td>{{ $role->created_at->format('d M Y') }}</td>
-{{--                                        <td style="text-align: center;">--}}
-{{--                                            <a href="{{ route('permission.edit', $permission->id) }}" class="btn btn-sm btn-primary">Edit</a>--}}
+                                        <td style="text-align: center;">
+                                            <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-sm btn-primary">Edit</a>
 
-{{--                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(this)">Delete</button>--}}
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(this)">Delete</button>
 
-{{--                                            <form action="{{ route('permission.destroy', $permission->id) }}" method="POST" class="d-inline delete-form">--}}
-{{--                                                @csrf--}}
-{{--                                                @method('DELETE')--}}
-{{--                                            </form>--}}
-{{--                                        </td>--}}
+                                            <form action="{{ route('roles.destroy', $role->id) }}" method="POST" class="d-inline delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        </td>
 
                                     </tr>
                                 @empty
