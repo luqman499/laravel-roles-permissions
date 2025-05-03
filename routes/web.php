@@ -26,3 +26,8 @@ Route::get('/roles/edit/{id}', [App\Http\Controllers\RoleController::class, 'edi
 Route::post('/roles/{id}', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update');
 Route::delete('/roles/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.destroy');
 
+//Articles Routes
+Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
+Route::get('articles/create', [App\Http\Controllers\ArticleController::class, 'create'])->name('articles.create');
+Route::post('articles/store', [App\Http\Controllers\ArticleController::class, 'store'])->name('articles.store');
+
