@@ -50,7 +50,6 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-
                         <p class="mb-0 text-secondary fs-6"></p>
                     </div>
                 </div>

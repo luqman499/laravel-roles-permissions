@@ -53,7 +53,7 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
@@ -61,7 +61,9 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $article = Article::find($id);
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -69,7 +71,23 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $article =Article::find($id);
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|min:3|unique:articles,title,' . $article->id,
+            'author' => 'required|min:3',
+        ]);
+
+        if ($validator->passes()) {
+//            $article = new Article();
+            $article->title = $request->title;
+            $article->text = $request->text;
+            $article->author = $request->author;
+            $article->save();
+            return redirect()->route('articles.index')->with('success','Article Updated successfully');
+        }else{
+            return redirect()->route('articles.edit',$id)->withErrors($validator)->withInput();
+        }
     }
 
     /**
@@ -77,6 +95,9 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+        return redirect()->route('articles.index')->with('success','Article Deleted successfully');
+
     }
 }

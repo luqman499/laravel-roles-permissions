@@ -30,4 +30,7 @@ Route::delete('/roles/{id}', [App\Http\Controllers\RoleController::class, 'destr
 Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
 Route::get('articles/create', [App\Http\Controllers\ArticleController::class, 'create'])->name('articles.create');
 Route::post('articles/store', [App\Http\Controllers\ArticleController::class, 'store'])->name('articles.store');
+Route::get('articles/edit/{id}', [App\Http\Controllers\ArticleController::class, 'edit'])->name('articles.edit');
+Route::post('articles/{id}', [App\Http\Controllers\ArticleController::class, 'update'])->name('articles.update');
+Route::delete('articles/{id}', [App\Http\Controllers\ArticleController::class, 'destroy'])->name('articles.destroy');
 

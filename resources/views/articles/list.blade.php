@@ -36,11 +36,11 @@
                                         <td>{{ $article->author}}</td>
                                         <td>{{ $article->created_at->format('d M Y') }}</td>
                                         <td style="text-align: center;">
-                                            <a href="" class="btn btn-sm btn-primary">Edit</a>
+                                            <a href="{{route('articles.edit',$article->id)}}" class="btn btn-sm btn-primary">Edit</a>
 
                                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(this)">Delete</button>
 
-                                            <form action="#" method="POST" class="d-inline delete-form">
+                                            <form action="{{route('articles.destroy',$article->id)}}" method="POST" class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
