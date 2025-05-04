@@ -39,7 +39,7 @@ class ArticleController extends Controller
         if ($validator->passes()) {
             $article = new Article();
             $article->title = $request->title;
-            $article->content = $request->content;
+            $article->text = $request->text;
             $article->author = $request->author;
             $article->save();
             return redirect()->route('articles.index')->with('success','Article created successfully');

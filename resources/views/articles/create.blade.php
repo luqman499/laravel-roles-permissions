@@ -37,8 +37,9 @@
                             </div>
 
                             <div class="mb-3 col-md-6">
-                                <textarea name="content" id="content" cols="30" rows="10" placeholder="content" class="form-control">{{ old('content') }}</textarea>
+                                <textarea name="text" id="text" cols="30" rows="10" placeholder="Content" class="form-control" >{{old('text')}}</textarea>
                             </div>
+
                             <div class="mb-3 col-md-6">
                                 <label for="author" class="form-label text-secondary">Author</label>
                                 <input type="text" class="form-control" name="author" placeholder="Author"

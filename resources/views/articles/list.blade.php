@@ -32,7 +32,7 @@
 {{--                                        <td>{{ $article->id }}</td>--}}
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $article->title}}</td>
-                                        <td>{{ $article->content}}</td>
+                                        <td>{{ $article->text}}</td>
                                         <td>{{ $article->author}}</td>
                                         <td>{{ $article->created_at->format('d M Y') }}</td>
                                         <td style="text-align: center;">
