@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -34,3 +35,9 @@ Route::get('articles/edit/{id}', [App\Http\Controllers\ArticleController::class,
 Route::post('articles/{id}', [App\Http\Controllers\ArticleController::class, 'update'])->name('articles.update');
 Route::delete('articles/{id}', [App\Http\Controllers\ArticleController::class, 'destroy'])->name('articles.destroy');
 
+//Users Routes
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+//Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+//Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+Route::post('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');

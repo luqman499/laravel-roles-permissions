@@ -9,8 +9,8 @@
                     {{-- Card Header --}}
                     <div
                         class="card-header bg-primary text-white fs-5 fw-semibold rounded-top-4 d-flex justify-content-between align-items-center">
-                        <span>{{ __('Roles / Create') }}</span>
-                        <a href="{{ route('roles.index') }}" class="btn btn-sm btn-light text-primary fw-semibold">
+                        <span>{{ __('Users / Edit') }}</span>
+                        <a href="{{ route('users.index') }}" class="btn btn-sm btn-light text-primary fw-semibold">
                             ← Back
                         </a>
                     </div>
@@ -25,30 +25,37 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('roles.store') }}">
+                        <form method="POST" action="{{route('users.update',$user->id)}}">
                             @csrf
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label text-secondary">Name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter name"
-                                       value="{{ old('name') }}">
+                                <input type="text" class="form-control" name="name" placeholder="Enter name" value="{{ old('name',$user->name) }}">
                                 @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 col-md-6">
+                                <label for="email" class="form-label text-secondary">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Enter email" value="{{ old('email',$user->email) }}">
+                                @error('email')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-4">
                                 <label class="form-label text-secondary d-block">Assign Roles:</label>
                                 <div class="d-flex flex-wrap gap-3">
-                                    @if($permissions->isNotEmpty())
-                                        @foreach($permissions as $permission)
+                                    @if($roles->isNotEmpty())
+                                        @foreach($roles as $role)
                                             <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="permission[]" id="permission_{{ $permission->id }}" value="{{ $permission->name }}">
-                                                <label class="form-check-label" for="permission_{{ $permission->id }}">{{ $permission->name }}</label>
+                                                <input {{($hasRole->contains($role->id)) ?'checked':''}} type="checkbox" class="form-check-input" name="role[]" id="permission_{{ $role->id }}" value="{{ $role->name }}">
+                                                <label class="form-check-label" for="role_{{ $role->id }}">{{ $role->name }}</label>
                                             </div>
                                         @endforeach
                                     @endif
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                         <p class="mb-0 text-secondary fs-6"></p>
                     </div>

@@ -36,6 +36,9 @@
                     <a class="nav-link px-0 {{ request()->is('articles*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('articles.index') }}">
                         Articles
                     </a>
+                    <a class="nav-link px-0 {{ request()->is('users*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('users.index') }}">
+                        Users
+                    </a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -61,7 +61,6 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-
         $article = Article::find($id);
         return view('articles.edit', compact('article'));
     }
@@ -72,7 +71,6 @@ class ArticleController extends Controller
     public function update(Request $request, string $id)
     {
         $article =Article::find($id);
-
         $validator = Validator::make($request->all(), [
             'title' => 'required|min:3|unique:articles,title,' . $article->id,
             'author' => 'required|min:3',
