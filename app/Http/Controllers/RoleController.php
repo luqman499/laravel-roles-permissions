@@ -28,7 +28,7 @@ class RoleController extends Controller
     //This method will store role page
     public function store(Request $request){
         $validator= Validator::make($request->all(),[
-            'name'=>'required|unique:roles|min:3',
+            'name'=>'required|unique:roles,name'
         ]);
 
             if ($validator->passes()) {

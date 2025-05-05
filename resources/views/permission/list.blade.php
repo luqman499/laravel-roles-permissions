@@ -28,7 +28,8 @@
                                 <tbody>
                                 @forelse ($permissions as $permission)
                                     <tr>
-                                        <td>{{ $permission->id }}</td>
+{{--                                        <td>{{ $permission->id }}</td>--}}
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $permission->name }}</td>
                                         <td>{{ $permission->created_at->format('d M Y') }}</td>
                                         <td style="text-align: center;">
