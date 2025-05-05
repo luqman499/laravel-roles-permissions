@@ -10,17 +10,9 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
 
-class UserController extends Controller implements HasMiddleware
+class UserController extends Controller
 {
-    public static function middleware(): array
-    {
-        return [
-            new Middleware('role:view users',only: ['index']),
-            new Middleware('role:edit users',only: ['edit']),
-//            new Middleware('role:create users',only: ['create']),
-//            new Middleware('role:delete users',only: ['destroy']),
-        ];
-    }
+
     /**
      * Display a listing of the resource.
      */

@@ -9,17 +9,9 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Spatie\Permission\Models\Role;
 
-class RoleController extends Controller implements HasMiddleware
+class RoleController extends Controller
 {
-    public static function middleware(): array
-    {
-        return [
-            new Middleware('role:view roles',only: ['index']),
-            new Middleware('role:edit roles',only: ['edit']),
-            new Middleware('role:create roles',only: ['create']),
-            new Middleware('role:delete roles',only: ['destroy']),
-        ];
-    }
+
     //This method will show role page
     public function index(){
         $roles = Role::all();

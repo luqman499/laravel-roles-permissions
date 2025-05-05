@@ -3,24 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use JetBrains\PhpStorm\Pure;
 
-class ArticleController extends Controller implements HasMiddleware
+class ArticleController extends Controller
 {
-    public static function middleware(): array
-    {
-        return [
-            new Middleware('articles:view articles',only: ['index']),
-            new Middleware('articles:edit articles',only: ['edit']),
-            new Middleware('articles:create articles',only: ['create']),
-            new Middleware('articles:delete articles',only: ['destroy']),
-        ];
-    }
-
 
     /**
      * Display a listing of the resource.
