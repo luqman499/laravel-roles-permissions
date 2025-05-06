@@ -7,6 +7,6 @@
         <title>Laravel</title>
     </head>
     <body>
-   <h1>hiii Luqman Wellcome </h1>
+   <h1>Access Denied!</h1>
     </body>
   </html>
