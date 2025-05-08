@@ -27,5 +27,12 @@ class UserSeeder extends Seeder
             'user_type' => '2',
             'password' => 'admin123',
         ]);
+
+        User::create([
+            'name' => 'article',
+            'email' => 'article@example.com',
+            'user_type'=>'4',
+           'password' => 'admin123'
+        ]);
     }
 }
