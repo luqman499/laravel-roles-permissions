@@ -17,7 +17,7 @@ class ArticleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if( !Auth::check() || auth()->user()->user_type != User::TYPE_ARTICLE){
+        if( !Auth::check() || auth()->user()->user_type != 4){
             return redirect()->route('login')->with('error','You are not authorized to access this page');
         }
         return $next($request);
