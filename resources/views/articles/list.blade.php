@@ -7,9 +7,11 @@
                 <div class="card shadow-sm border-0 rounded-4">
                     <div class="card-header bg-primary text-white fs-5 fw-semibold rounded-top-4 d-flex justify-content-between align-items-center">
                         {{ __('Articles') }}
+                        @can('create articles')
                         <a href="{{ route('articles.create') }}" class="btn btn-sm btn-light text-primary fw-semibold">
                             + Create
                         </a>
+                        @endcan
                     </div>
 
                     <div class="card-body bg-light rounded-bottom-4">
@@ -36,14 +38,16 @@
                                         <td>{{ $article->author}}</td>
                                         <td>{{ $article->created_at->format('d M Y') }}</td>
                                         <td style="text-align: center;">
+                                            @can('edit articles')
                                             <a href="{{route('articles.edit',$article->id)}}" class="btn btn-sm btn-primary">Edit</a>
-
+                                            @endcan
+                                            @can('delete articles')
                                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(this)">Delete</button>
-
                                             <form action="{{route('articles.destroy',$article->id)}}" method="POST" class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
+                                                @endcan
                                         </td>
 
                                     </tr>

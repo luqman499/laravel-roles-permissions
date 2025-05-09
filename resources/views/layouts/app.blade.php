@@ -7,9 +7,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ✅ Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+{{--    <!-- ✅ Bootstrap JS (already included correctly) -->--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>--}}
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -60,12 +67,12 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown d-flex align-items-center">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->name }} ({{Auth::user()->roles->pluck('name')->implode(',' )}})
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item text-decoration-none" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); console.log('Logout clicked'); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -74,6 +81,7 @@
                                 </form>
                             </div>
                         </li>
+
                     @endguest
                 </ul>
             </div>

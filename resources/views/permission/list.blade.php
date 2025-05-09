@@ -6,10 +6,13 @@
             <div class="col-md-8">
                 <div class="card shadow-sm border-0 rounded-4">
                     <div class="card-header bg-primary text-white fs-5 fw-semibold rounded-top-4 d-flex justify-content-between align-items-center">
+
                         {{ __('Permissions') }}
+                        @can('create permission')
                         <a href="{{ route('permission.create') }}" class="btn btn-sm btn-light text-primary fw-semibold">
                             + Create
                         </a>
+                        @endcan
                     </div>
 
                     <div class="card-body bg-light rounded-bottom-4">
@@ -33,14 +36,17 @@
                                         <td>{{ $permission->name }}</td>
                                         <td>{{ $permission->created_at->format('d M Y') }}</td>
                                         <td style="text-align: center;">
+                                            @can('edit permission')
                                             <a href="{{ route('permission.edit', $permission->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                            @endcan
 
+                                                @can('delete permission')
                                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(this)">Delete</button>
-
                                             <form action="{{ route('permission.destroy', $permission->id) }}" method="POST" class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
+                                                @endcan
                                         </td>
 
                                     </tr>
