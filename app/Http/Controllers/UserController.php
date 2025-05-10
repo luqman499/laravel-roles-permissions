@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
-
 
 class UserController extends Controller
 {
@@ -27,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -35,7 +34,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:4',
+            'confirm_password' => 'required|same:password'
+        ]);
+
+        if($validator->fails()){
+            return redirect()->route('users.create')->withErrors($validator)->withInput();
+        }
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password=Hash::make($request->password);
+        $user->save();
+        $user->syncRoles($request->role);
+        return redirect()->route('users.index')->with('success','User Added successfully');
     }
 
 
@@ -78,6 +93,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('success','Article Deleted successfully');
     }
 }

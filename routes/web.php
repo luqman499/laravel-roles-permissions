@@ -41,6 +41,7 @@ Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create
 Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
 Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
 Route::post('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 
 
 
