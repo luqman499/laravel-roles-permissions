@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -10,14 +12,17 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resources([
+    'permission' => PermissionController::class,
+]);
 
-//Permissions routes
-Route::get('/permission', [App\Http\Controllers\PermissionController::class,'index'])->name('permission.index');
-Route::get('/permission/create', [App\Http\Controllers\PermissionController::class, 'create'])->name('permission.create');
-Route::post('/permission/store', [App\Http\Controllers\PermissionController::class, 'store'])->name('permission.store');
-Route::get('/permission/edit/{id}', [App\Http\Controllers\PermissionController::class, 'edit'])->name('permission.edit');
-Route::post('/permission/{id}', [App\Http\Controllers\PermissionController::class, 'update'])->name('permission.update');
-Route::delete('/permission/{id}', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permission.destroy');
+////Permissions routes
+//Route::get('/permission', [App\Http\Controllers\PermissionController::class,'index'])->name('permission.index');
+//Route::get('/permission/create', [App\Http\Controllers\PermissionController::class, 'create'])->name('permission.create');
+//Route::post('/permission/store', [App\Http\Controllers\PermissionController::class, 'store'])->name('permission.store');
+//Route::get('/permission/edit/{id}', [App\Http\Controllers\PermissionController::class, 'edit'])->name('permission.edit');
+//Route::post('/permission/{id}', [App\Http\Controllers\PermissionController::class, 'update'])->name('permission.update');
+ Route::delete('/permission/{id}', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permission.destroy');
 
 //Roles Routes
 Route::get('/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('roles.index');

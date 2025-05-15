@@ -30,6 +30,7 @@
                                 </thead>
                                 <tbody>
                                 @forelse ($permissions as $permission)
+
                                     <tr>
 {{--                                        <td>{{ $permission->id }}</td>--}}
                                         <td>{{ $loop->iteration }}</td>

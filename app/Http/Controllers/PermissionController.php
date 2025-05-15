@@ -13,7 +13,7 @@ class PermissionController extends Controller
     public function index(){
         $permissions = Permission::orderBy('created_at','DESC')->paginate(20);
 
-        return view('permission.list',['permissions'=>$permissions]);
+        return view('permission.list',compact('permissions'));
     }
 
     //this method will show the create permission page
@@ -35,6 +35,8 @@ class PermissionController extends Controller
        }
     }
 
+
+
     //this method will show the edit permission page
     public function edit($id){
         $permission=Permission::findorFail($id);
@@ -42,10 +44,16 @@ class PermissionController extends Controller
 
     }
 
+//    public function show(string $id)
+//    {
+//        //
+//    }
+//
+//
 
     //this method will show the update permission page
     public function update($id,Request $request){
-        $permission=Permission::findorFail($id);
+        $permission=Permission::findOrFail($id);
         $validator= Validator::make($request->all(),[
             'name'=>'required|min:3|unique:permissions,name,'.$id.',id'
         ]);
