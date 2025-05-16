@@ -25,8 +25,9 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('permission.update',$permission->id) }}">
-                            @csrf
+                            <form method="POST" action="{{ route('permission.update', $permission->id) }}">
+                                @csrf
+                                @method('PUT')
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label text-secondary">Name</label>
                                 <input type="text" class="form-control" name="name" placeholder="Enter name"

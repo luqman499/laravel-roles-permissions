@@ -52,7 +52,7 @@ class PermissionController extends Controller
 //
 
     //this method will show the update permission page
-    public function update($id,Request $request){
+    public function update(Request $request , $id){
         $permission=Permission::findOrFail($id);
         $validator= Validator::make($request->all(),[
             'name'=>'required|min:3|unique:permissions,name,'.$id.',id'

@@ -7,15 +7,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- ✅ Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-{{--    <!-- ✅ Bootstrap JS (already included correctly) -->--}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -25,32 +18,29 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 @can('view permission')
-                <a class="nav-link px-0 {{ request()->is('permission*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('permission.index') }}">
-                    Permission
-                </a>
+                    <a class="nav-link px-0 {{ request()->is('permission*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('permission.index') }}">
+                        Permission
+                    </a>
                 @endcan
-
                 @can('view roles')
-                <a class="nav-link px-0 {{ request()->is('roles*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('roles.index') }}">
-                    Roles
-                </a>
+                    <a class="nav-link px-0 {{ request()->is('roles*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('roles.index') }}">
+                        Roles
+                    </a>
                 @endcan
                 @can('view articles')
-                <a class="nav-link px-0 {{ request()->is('articles*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('articles.index') }}">
-                    Articles
-                </a>
+                    <a class="nav-link px-0 {{ request()->is('articles*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('articles.index') }}">
+                        Articles
+                    </a>
                 @endcan
                 @can('view users')
-                <a class="nav-link px-0 {{ request()->is('users*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('users.index') }}">
-                    Users
-                </a>
+                    <a class="nav-link px-0 {{ request()->is('users*') ? 'border-bottom border-primary border-2' : '' }}" href="{{ route('users.index') }}">
+                        Users
+                    </a>
                 @endcan
             </div>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto"></ul>
                 <ul class="navbar-nav ms-auto">
@@ -66,13 +56,14 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown d-flex align-items-center">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }} ({{Auth::user()->roles->pluck('name')->implode(',' )}})
+                        <li class="nav-item dropdown no-tailwind">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }} ({{ Auth::user()->roles->pluck('name')->implode(',') }})
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item text-decoration-none" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault(); console.log('Logout clicked'); document.getElementById('logout-form').submit();">
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -90,6 +81,9 @@
         @yield('content')
     </main>
 </div>
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 @stack('scripts')
+
 </body>
 </html>

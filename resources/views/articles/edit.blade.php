@@ -27,6 +27,7 @@
 
                         <form method="POST" action="{{ route('articles.update',$article->id) }}">
                             @csrf
+                            @method('PUT')
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label text-secondary">Title</label>
                                 <input type="text" class="form-control" name="title" placeholder="title"
