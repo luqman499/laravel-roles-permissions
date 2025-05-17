@@ -73,7 +73,7 @@ class ArticleController extends Controller
     {
         $article =Article::find($id);
         $validator = Validator::make($request->all(), [
-            'title' => 'required|min:3|unique:articles,title,' . $article->id,
+            'title' => 'required|min:3|unique:articles,title,'.$article->id,
             'author' => 'required|min:3',
         ]);
 
